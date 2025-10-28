@@ -1,0 +1,40 @@
+[package]
+name = "cedar-policy-compiler"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.82"
+description = "Cedar policy compiler to WebAssembly"
+license = "Apache-2.0"
+
+[dependencies]
+# Cedar dependencies - using published crates from crates.io
+# Using v4.4 as required
+# If you want to use local path dependencies, uncomment and adjust the paths below
+# cedar-policy-core = { path = "../cedar/cedar-policy-core", version = "4.7.0" }
+cedar-policy-core = "=4.4.0"
+
+# WebAssembly encoding
+wasm-encoder = "0.220"
+wasmparser = "0.220"
+
+# Utilities
+thiserror = "2.0"
+itertools = "0.14"
+
+# NOTE: This project requires Rust 1.85+ for cedar-policy-core 4.4.0
+# The current system has Rust 1.82-nightly which is incompatible.
+# To build, either:
+# 1. Upgrade Rust toolchain to 1.85+
+# 2. Use cedar-policy-core 4.2.x instead (change version above)
+
+[dev-dependencies]
+# Testing WASM output
+wasmtime = "28.0"
+
+[lib]
+name = "cedar_policy_compiler"
+path = "src/lib.rs"
+
+[[bin]]
+name = "cedar-compile"
+path = "src/bin/main.rs"

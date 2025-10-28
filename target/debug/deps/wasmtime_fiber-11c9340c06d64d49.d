@@ -1,0 +1,10 @@
+/Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/deps/wasmtime_fiber-11c9340c06d64d49.d: /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/lib.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/stackswitch.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/unix.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/stackswitch/aarch64.rs
+
+/Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/deps/libwasmtime_fiber-11c9340c06d64d49.rlib: /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/lib.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/stackswitch.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/unix.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/stackswitch/aarch64.rs
+
+/Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/deps/libwasmtime_fiber-11c9340c06d64d49.rmeta: /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/lib.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/stackswitch.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/unix.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/stackswitch/aarch64.rs
+
+/Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/lib.rs:
+/Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/stackswitch.rs:
+/Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/unix.rs:
+/Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmtime-fiber-28.0.1/src/stackswitch/aarch64.rs:

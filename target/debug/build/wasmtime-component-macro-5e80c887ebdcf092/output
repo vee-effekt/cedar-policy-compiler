@@ -1,0 +1,2 @@
+cargo:rerun-if-changed=build.rs
+cargo:rustc-env=DEBUG_OUTPUT_DIR=/Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/wasmtime-component-macro-5e80c887ebdcf092/out

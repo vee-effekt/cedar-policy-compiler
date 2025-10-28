@@ -1,0 +1,10 @@
+/Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/deps/ar_archive_writer-04ff12321d6fdc05.d: /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/lib.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/alignment.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/archive.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/archive_writer.rs
+
+/Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/deps/libar_archive_writer-04ff12321d6fdc05.rlib: /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/lib.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/alignment.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/archive.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/archive_writer.rs
+
+/Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/deps/libar_archive_writer-04ff12321d6fdc05.rmeta: /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/lib.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/alignment.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/archive.rs /Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/archive_writer.rs
+
+/Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/lib.rs:
+/Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/alignment.rs:
+/Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/archive.rs:
+/Users/lapwing/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ar_archive_writer-0.2.0/src/archive_writer.rs:
