@@ -7,11 +7,11 @@ description = "Cedar policy compiler to WebAssembly"
 license = "Apache-2.0"
 
 [dependencies]
-# Cedar dependencies - using published crates from crates.io
-# Using v4.4 as required
-# If you want to use local path dependencies, uncomment and adjust the paths below
-# cedar-policy-core = { path = "../cedar/cedar-policy-core", version = "4.7.0" }
-cedar-policy-core = "=4.4.0"
+# Cedar dependencies - using local path for compatibility with cedar-drt
+# Path from cedar-policy-compiler to cedar-policy-core (works both locally and in Docker):
+#   Locally: ../cedar/cedar-policy-core
+#   Docker:  ../cedar/cedar-policy-core (same!)
+cedar-policy-core = { path = "../cedar/cedar-policy-core" }
 
 # WebAssembly encoding
 wasm-encoder = "0.220"
