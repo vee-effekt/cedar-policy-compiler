@@ -1,0 +1,19 @@
+Writing generated file: /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/settings.rs
+Writing generated file: /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/types.rs
+Writing generated file: /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/opcodes.rs
+Writing generated file: /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/inst_builder.rs
+Writing generated file: /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/settings-arm64.rs
+Writing generated file: /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/clif_opt.isle
+Writing generated file: /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/clif_lower.isle
+Rebuilding /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_opt.rs
+Writing ISLE-generated Rust code to /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_opt.rs
+Rebuilding /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_x64.rs
+Writing ISLE-generated Rust code to /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_x64.rs
+Rebuilding /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_aarch64.rs
+Writing ISLE-generated Rust code to /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_aarch64.rs
+Rebuilding /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_s390x.rs
+Writing ISLE-generated Rust code to /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_s390x.rs
+Rebuilding /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_riscv64.rs
+Writing ISLE-generated Rust code to /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_riscv64.rs
+Rebuilding /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_pulley_shared.rs
+Writing ISLE-generated Rust code to /Users/lapwing/Desktop/cedar/cedar-policy-compiler/target/debug/build/cranelift-codegen-bac6f6faf8f17f86/out/isle_pulley_shared.rs
