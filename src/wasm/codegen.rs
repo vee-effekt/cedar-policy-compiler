@@ -117,39 +117,25 @@ impl WasmCodeGen {
                 f.instruction(&WasmInst::I64GeS);
             }
 
-            // Logical operations (on i32)
+            // Logical operations (on i64)
             Instruction::And => {
-                f.instruction(&WasmInst::I32And);
+                f.instruction(&WasmInst::I64And);
             }
             Instruction::Or => {
-                f.instruction(&WasmInst::I32Or);
+                f.instruction(&WasmInst::I64Or);
             }
             Instruction::Not => {
-                f.instruction(&WasmInst::I32Eqz); // Logical not: x == 0
+                f.instruction(&WasmInst::I64Eqz); // Logical not: x == 0
             }
 
             // Control flow
             Instruction::IfThenElse => {
-                // Our IR currently emits: NoDecision (i64), Permit/Forbid (i64), condition (i32), IfThenElse
-                // Stack at IfThenElse: [NoDecision (i64), Permit (i64), condition (i32)]
-                //
-                // We need to use locals to store the values and implement if-else
-                // For now, use a simpler approach: convert i64 values to i32 for select
-                // Or better: use if-else blocks
-                //
-                // We'll need to use locals for this. For now, let's convert to i32.
-                // Stack: [else_value (i64), then_value (i64), condition (i32)]
-                //
-                // Actually, WASM select requires condition to be i32, and values can be i32 or i64
-                // but values must match. Since we have i64 values, we need locals.
-                //
-                // Simplified approach: use a different algorithm with locals
-                // But we don't have locals declared yet!
-                //
-                // Alternative: use i32 for everything
-                // Let's just use select with typed operands - need BlockType
-
-                //Since wasm_encoder supports typed select, use it:
+                // Stack at IfThenElse: [else_value (i32), then_value (i32), condition (i64)]
+                // WASM select requires: [else_value, then_value, condition (i32)]
+                // So we need to convert the i64 condition to i32
+                // We can use I32WrapI64 which takes the low 32 bits
+                f.instruction(&WasmInst::I32WrapI64);
+                // Now stack is: [else_value (i32), then_value (i32), condition (i32)]
                 f.instruction(&WasmInst::Select);
             }
 

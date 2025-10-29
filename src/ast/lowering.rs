@@ -217,12 +217,16 @@ fn compile_expr(expr: &Expr, instructions: &mut Vec<Instruction>) -> Result<(), 
         }
 
         // Variable references (principal, action, resource, context)
-        // For now, we can't evaluate these without runtime support
-        // Treat them as "true" for initial implementation (INCORRECT but allows testing)
-        Var(_var) => {
-            // TODO: Implement proper variable lookup
-            // For now, just push true to allow policies to compile
-            instructions.push(Instruction::PushBool(true));
+        Var(var) => {
+            // Variables need runtime support for proper evaluation
+            // For now, push placeholder i64 values based on variable type
+            use cedar_policy_core::ast::Var;
+            match var {
+                Var::Principal => instructions.push(Instruction::PushInt(1)), // Placeholder EntityUID
+                Var::Action => instructions.push(Instruction::PushInt(2)),    // Placeholder EntityUID
+                Var::Resource => instructions.push(Instruction::PushInt(3)),  // Placeholder EntityUID
+                Var::Context => instructions.push(Instruction::PushInt(0)),   // Placeholder record
+            }
             Ok(())
         }
 
@@ -237,11 +241,21 @@ fn compile_expr(expr: &Expr, instructions: &mut Vec<Instruction>) -> Result<(), 
 /// Compile a literal value
 fn compile_literal(lit: &Literal, instructions: &mut Vec<Instruction>) {
     match lit {
-        Literal::Bool(b) => instructions.push(Instruction::PushBool(*b)),
+        Literal::Bool(b) => {
+            // Push as i64 for uniformity with other types
+            instructions.push(Instruction::PushInt(if *b { 1 } else { 0 }));
+        }
         Literal::Long(i) => instructions.push(Instruction::PushInt(*i)),
         Literal::String(s) => instructions.push(Instruction::PushString(s.to_string())),
-        // TODO: Handle other literal types
-        _ => instructions.push(Instruction::PushBool(false)), // Placeholder
+        Literal::EntityUID(uid) => {
+            // EntityUIDs need runtime support for proper handling
+            // For now, create a hash of the UID string as an i64
+            use std::collections::hash_map::DefaultHasher;
+            use std::hash::{Hash, Hasher};
+            let mut hasher = DefaultHasher::new();
+            uid.to_string().hash(&mut hasher);
+            instructions.push(Instruction::PushInt(hasher.finish() as i64));
+        }
     }
 }
 
