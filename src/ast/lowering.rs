@@ -56,10 +56,12 @@ impl LoweredModule {
     pub fn from_policy(policy: &Policy) -> Result<Self, String> {
         let mut instructions = Vec::new();
 
-        // NoDecision when condition is false (pushed first for WASM select)
-        instructions.push(Instruction::NoDecision);
+        // WASM select: pops [c, val_2, val_1], returns val_1 if c≠0, else val_2
+        // We want: return effect if condition≠0, else NoDecision
+        // So: effect must be val_1, NoDecision must be val_2
+        // Push order: effect, NoDecision, condition
 
-        // Add the policy effect (permit/forbid) when condition is true
+        // Add the policy effect (will be val_1, returned when condition is true)
         match policy.effect() {
             cedar_policy_core::ast::Effect::Permit => {
                 instructions.push(Instruction::Permit);
@@ -68,6 +70,9 @@ impl LoweredModule {
                 instructions.push(Instruction::Forbid);
             }
         }
+
+        // NoDecision (will be val_2, returned when condition is false)
+        instructions.push(Instruction::NoDecision);
 
         // Compile the condition (when clause)
         // In cedar 4.4+, condition() returns Expr directly, not Option<Expr>
@@ -78,6 +83,9 @@ impl LoweredModule {
             let _ = writeln!(f, "DEBUG: Condition kind: {:?}", condition.expr_kind());
         }
         compile_expr(&condition, &mut instructions)?;
+
+        // Debug: write all instructions
+        let _ = std::fs::write("/tmp/instructions_from_policy.txt", format!("{:#?}", instructions));
 
         // IfThenElse will use WASM select: [else_value, then_value, condition]
         // Returns then_value if condition is true, else_value otherwise
@@ -94,10 +102,10 @@ impl LoweredModule {
     pub fn from_template(template: &Template) -> Result<Self, String> {
         let mut instructions = Vec::new();
 
-        // NoDecision when condition is false (pushed first for WASM select)
-        instructions.push(Instruction::NoDecision);
+        // WASM select: pops [c, val_2, val_1], returns val_1 if c≠0, else val_2
+        // Push order: effect (val_1), NoDecision (val_2), condition (c)
 
-        // Add the policy effect when condition is true
+        // Add the policy effect (will be val_1, returned when condition is true)
         match template.effect() {
             cedar_policy_core::ast::Effect::Permit => {
                 instructions.push(Instruction::Permit);
@@ -107,9 +115,15 @@ impl LoweredModule {
             }
         }
 
+        // NoDecision (will be val_2, returned when condition is false)
+        instructions.push(Instruction::NoDecision);
+
         // Compile the condition
         let condition = template.condition();
         compile_expr(&condition, &mut instructions)?;
+
+        // Debug: write all instructions
+        let _ = std::fs::write("/tmp/instructions_from_template.txt", format!("{:#?}", instructions));
 
         // IfThenElse will use WASM select: [else_value, then_value, condition]
         instructions.push(Instruction::IfThenElse);
