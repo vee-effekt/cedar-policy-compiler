@@ -41,11 +41,11 @@ impl FunctionSignature {
 
     /// Create signature for the main policy evaluation function
     /// Input: none (uses global state)
-    /// Output: i32 (0 = deny, 1 = permit, 2 = error)
+    /// Output: i32 (-1 = no decision, 0 = deny, 1 = permit, 2 = error)
     pub fn policy_entry() -> Self {
         Self {
             params: vec![],
-            results: vec![WasmType::Int],
+            results: vec![WasmType::Bool], // Use Bool which maps to i32
         }
     }
 }

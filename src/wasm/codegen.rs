@@ -75,6 +75,9 @@ impl WasmCodeGen {
             self.compile_instruction(inst, &mut f)?;
         }
 
+        // Every WASM function body must end with an End instruction
+        f.instruction(&WasmInst::End);
+
         Ok(f)
     }
 
@@ -127,14 +130,27 @@ impl WasmCodeGen {
 
             // Control flow
             Instruction::IfThenElse => {
-                // Stack: [condition, then_value, else_value]
-                // WASM if needs: [condition] on stack, then branch code, else branch code
-                // This is a simplified version - real implementation would be more complex
-                f.instruction(&WasmInst::If(wasm_encoder::BlockType::Result(ValType::I32)));
-                // then branch would go here
-                f.instruction(&WasmInst::Else);
-                // else branch would go here
-                f.instruction(&WasmInst::End);
+                // Our IR currently emits: NoDecision (i64), Permit/Forbid (i64), condition (i32), IfThenElse
+                // Stack at IfThenElse: [NoDecision (i64), Permit (i64), condition (i32)]
+                //
+                // We need to use locals to store the values and implement if-else
+                // For now, use a simpler approach: convert i64 values to i32 for select
+                // Or better: use if-else blocks
+                //
+                // We'll need to use locals for this. For now, let's convert to i32.
+                // Stack: [else_value (i64), then_value (i64), condition (i32)]
+                //
+                // Actually, WASM select requires condition to be i32, and values can be i32 or i64
+                // but values must match. Since we have i64 values, we need locals.
+                //
+                // Simplified approach: use a different algorithm with locals
+                // But we don't have locals declared yet!
+                //
+                // Alternative: use i32 for everything
+                // Let's just use select with typed operands - need BlockType
+
+                //Since wasm_encoder supports typed select, use it:
+                f.instruction(&WasmInst::Select);
             }
 
             Instruction::Return => {
@@ -143,10 +159,13 @@ impl WasmCodeGen {
 
             // Policy decisions
             Instruction::Permit => {
-                f.instruction(&WasmInst::I64Const(Decision::Permit as i64));
+                f.instruction(&WasmInst::I32Const(Decision::Permit as i32));
             }
             Instruction::Forbid => {
-                f.instruction(&WasmInst::I64Const(Decision::Deny as i64));
+                f.instruction(&WasmInst::I32Const(Decision::Deny as i32));
+            }
+            Instruction::NoDecision => {
+                f.instruction(&WasmInst::I32Const(Decision::NoDecision as i32));
             }
 
             // Entity operations - these would require runtime support

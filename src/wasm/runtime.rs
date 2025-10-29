@@ -3,8 +3,13 @@
 /// Runtime decision values
 #[repr(i32)]
 pub enum Decision {
+    /// Policy doesn't apply (scope doesn't match or condition is false)
+    NoDecision = -1,
+    /// Explicit deny
     Deny = 0,
+    /// Explicit permit
     Permit = 1,
+    /// Evaluation error
     Error = 2,
 }
 
